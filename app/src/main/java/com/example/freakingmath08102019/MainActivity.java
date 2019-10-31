@@ -18,13 +18,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Random random = new Random();
-
-        for (int i = 0 ; i<= 30 ; i++){
-            int number = random.nextInt(max - min + 1) + min;
-            Log.d("BBB",number + "");
-
-        }
+//        Random random = new Random();
+//
+//        for (int i = 0 ; i<= 30 ; i++){
+//            int number = random.nextInt(max - min + 1) + min;
+//            Log.d("BBB",number + "");
+//
+//        }
 
 //        Context => Truyen ten man hinh vao
 //                    => this
