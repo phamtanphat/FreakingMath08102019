@@ -11,11 +11,50 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:orientation="vertical"
         android:layout_weight="7"
-        android:background="#f20"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/textviewSothu1"
+                android:textStyle="bold"
+                android:textColor="#ffff"
+                android:textSize="100sp"
+                android:text="3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:padding="5dp"
+                android:id="@+id/textviewPheptinh"
+                android:textStyle="bold"
+                android:textColor="#ffff"
+                android:textSize="100sp"
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/textviewSothu2"
+                android:textStyle="bold"
+                android:textColor="#ffff"
+                android:textSize="100sp"
+                android:text="3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/textviewKetqua"
+            android:textStyle="bold"
+            android:textColor="#ffff"
+            android:textSize="100sp"
+            android:text="= 6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 
@@ -31,6 +70,10 @@
             app:layout_constraintGuide_percent="0.5"
             android:layout_height="wrap_content"/>
         <ImageButton
+            android:id="@+id/imagebuttonTrue"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_check_mark"
             app:layout_constraintRight_toRightOf="@id/guidlineVertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -38,6 +81,10 @@
             android:layout_width="0dp"
             android:layout_height="0dp"/>
         <ImageButton
+            android:id="@+id/imagebuttonFalse"
+            android:src="@drawable/ic_delete"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="true"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
