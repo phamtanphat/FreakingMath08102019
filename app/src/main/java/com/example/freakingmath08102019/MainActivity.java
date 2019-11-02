@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     TextView mTxtSoThu1,mTxtSoThu2,mTxtPhepTinh,mTxtKetQua;
     ImageButton mImgDung,mImgSai;
@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     int mRandomSt2 = 0;
     int mIndexPhepTinh = 0;
     int mKetqua = 0;
+    boolean mIsTrue = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,11 +47,11 @@ public class MainActivity extends AppCompatActivity {
         //Handle random caculator
         handleRandom();
     }
-
     private void handleRandom() {
         mRandomSt1 = mRandom.nextInt(9) + 1;
         mRandomSt2 = mRandom.nextInt(9) + 1;
-        mIndexPhepTinh = mRandom.nextInt(3);
+        mIndexPhepTinh = mRandom.nextInt(4);
+        mIsTrue = mRandom.nextBoolean();
 
         switch (mIndexPhepTinh){
             case 0 : mKetqua = mRandomSt1 + mRandomSt2;
@@ -59,17 +60,36 @@ public class MainActivity extends AppCompatActivity {
             case 1 : mKetqua = mRandomSt1 - mRandomSt2;
                 mTxtPhepTinh.setText("-");
                 break;
+            case 2 : mKetqua = mRandomSt1 / mRandomSt2;
+                mTxtPhepTinh.setText("/");
+                break;
             default : mKetqua = mRandomSt1 * mRandomSt2;
                 mTxtPhepTinh.setText("*");
                 break;
         }
+        if (!mIsTrue){
+            mKetqua += mRandom.nextInt(5);
+        }
         mTxtSoThu1.setText(mRandomSt1 + "");
         mTxtSoThu2.setText(mRandomSt2 + "");
         mTxtKetQua.setText(" = " + mKetqua );
-
     }
 
     private void event() {
+        // callback
+        mImgDung.setOnClickListener(MainActivity.this);
+        mImgSai.setOnClickListener(MainActivity.this);
+    }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.imagebuttonTrue :
+                Toast.makeText(this, "Button true", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.imagebuttonFalse:
+                Toast.makeText(this, "Button false", Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 }
