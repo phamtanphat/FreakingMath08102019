@@ -83,13 +83,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        String thongbao = "";
         switch (v.getId()){
             case R.id.imagebuttonTrue :
-                Toast.makeText(this, "Button true", Toast.LENGTH_SHORT).show();
+                thongbao = mIsTrue ? "Chinh xac" : "Sai roi";
+                Toast.makeText(this, thongbao, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.imagebuttonFalse:
-                Toast.makeText(this, "Button false", Toast.LENGTH_SHORT).show();
+                thongbao = !mIsTrue ? "Chinh xac" : "Sai roi";
+                Toast.makeText(this, thongbao, Toast.LENGTH_SHORT).show();
                 break;
         }
+        handleRandom();
     }
 }
