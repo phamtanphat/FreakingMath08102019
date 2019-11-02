@@ -7,29 +7,69 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
+    TextView mTxtSoThu1,mTxtSoThu2,mTxtPhepTinh,mTxtKetQua;
+    ImageButton mImgDung,mImgSai;
+    Random mRandom;
+    int mRandomSt1 = 0;
+    int mRandomSt2 = 0;
+    int mIndexPhepTinh = 0;
+    int mKetqua = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        init();
+        mapView();
+        event();
+    }
+    private void init() {
+        // findviewby
+        mTxtSoThu1 = findViewById(R.id.textviewSothu1);
+        mTxtSoThu2 = findViewById(R.id.textviewSothu2);
+        mTxtPhepTinh = findViewById(R.id.textviewPheptinh);
+        mTxtKetQua = findViewById(R.id.textviewKetqua);
+        mImgDung = findViewById(R.id.imagebuttonTrue);
+        mImgSai = findViewById(R.id.imagebuttonFalse);
 
-//        Random random = new Random();
-//
-//        for (int i = 0 ; i<= 30 ; i++){
-//            int number = random.nextInt(max - min + 1) + min;
-//            Log.d("BBB",number + "");
-//
-//        }
+        // Create random
+        mRandom = new Random();
+    }
+    private void mapView() {
+        //Handle random caculator
+        handleRandom();
+    }
 
-//        Context => Truyen ten man hinh vao
-//                    => this
-        // cac xem tham so trong method : ctrl + P
-        // phim goi y code : ctrl + space
-//        Toast.makeText(this,number + "" , Toast.LENGTH_SHORT).show();
+    private void handleRandom() {
+        mRandomSt1 = mRandom.nextInt(9) + 1;
+        mRandomSt2 = mRandom.nextInt(9) + 1;
+        mIndexPhepTinh = mRandom.nextInt(3);
+
+        switch (mIndexPhepTinh){
+            case 0 : mKetqua = mRandomSt1 + mRandomSt2;
+                mTxtPhepTinh.setText("+");
+                break;
+            case 1 : mKetqua = mRandomSt1 - mRandomSt2;
+                mTxtPhepTinh.setText("-");
+                break;
+            default : mKetqua = mRandomSt1 * mRandomSt2;
+                mTxtPhepTinh.setText("*");
+                break;
+        }
+        mTxtSoThu1.setText(mRandomSt1 + "");
+        mTxtSoThu2.setText(mRandomSt2 + "");
+        mTxtKetQua.setText(" = " + mKetqua );
+
+    }
+
+    private void event() {
+
     }
 }
